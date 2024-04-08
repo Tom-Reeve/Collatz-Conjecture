@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<HTML>
+    <head>
+        <title>Collatz Conjecture</title>
+        <style>
+            th, td {
+                border: 1px solid black;
+            }
+            #table-index {
+                width: 100px;
+            }
+            #table-value {
+                width: 750px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="number" id="input" style="width:500px" oninput="Collatz()">
+        <div id="result">0</div>
+        <table id="table">
+            <tr>
+                <th id="table-index">Index</th>
+                <th id="table-value">Value</th>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td><span id="value-span"</td>
+            </tr>
+        </table>
+    </body>
+    <script>
+        function Collatz() {
+            let n = document.getElementById("input").value;
+            let i = 0;
+            
+            let t = document.getElementById("table");
+
+            for (let j = t.rows.length ; j > 2 ; j--) {
+                t.deleteRow(2);
+            }
+            
+            document.getElementById("value-span").innerHTML = n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+            while (n > 1) {
+                i += 1;
+                n = n % 2 === 0 ? n / 2 : (3 * n) + 1;
+
+                let r = t.insertRow(i + 1);
+                let c1 = r.insertCell(0);
+                let c2 = r.insertCell(1);
+
+                c1.innerHTML = i;
+                c2.innerHTML = n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+            document.getElementById("result").innerHTML = i;
+        }
+    </script>
+</HTML>
