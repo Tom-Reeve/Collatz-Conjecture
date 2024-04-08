@@ -2,5 +2,5 @@
 Gives the Collatz Conjecture sequence for an inputted number
 
 # To Do List
-- Currently Only Works on Numbers Below 2<sup>53</sup> + 1 (mod issue)
+- Breaks Somewhere Between 2<sup>52></sup> and 2<sup>53</sup> (Large Number % Issue)
 - Show Maximum Value Reached
